@@ -1,5 +1,6 @@
-function createElemWithText(tagName = "p", textContent = "", className) {
-    const element = document.createElement(tagName);
+//Everytime a function is done, save it, ' git commit -a -m "comment" ', then ' git push '
+function createElemWithText(elemType = "p", textContent = "", className) {
+    const element = document.createElement(elemType);
     element.textContent = textContent;
     if (className) element.className = className;
     return element;
@@ -14,4 +15,6 @@ function createSelectOptions(users) {
         return option;
     });
 }
+
+
 
