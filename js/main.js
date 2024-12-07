@@ -16,5 +16,15 @@ function createSelectOptions(users) {
     });
 }
 
+function toggleCommentSection(postId) {
+    const section = document.querySelector(`section[data-post-id='${postId}']`);
+    
+    if (!section) return undefined;
+    
+    section.classList.toggle('hide');
+    return section;
+}
+
+
 
 
