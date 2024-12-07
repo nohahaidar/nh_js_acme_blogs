@@ -4,3 +4,14 @@ function createElemWithText(tagName = "p", textContent = "", className) {
     if (className) element.className = className;
     return element;
 }
+
+function createSelectOptions(users) {
+    if (!users) return undefined;
+    return users.map(user => {
+        const option = document.createElement('option');
+        option.value = user.id;
+        option.textContent = user.name;
+        return option;
+    });
+}
+
