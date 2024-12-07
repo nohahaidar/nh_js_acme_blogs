@@ -17,6 +17,8 @@ function createSelectOptions(users) {
 }
 
 function toggleCommentSection(postId) {
+    if (!postId) return undefined;
+
     const section = document.querySelector(`section[data-post-id='${postId}']`);
     
     if (!section) return null;
