@@ -332,6 +332,15 @@ async function initPage() {
     return [users, select];
   }
   
+//Function 21
+function initApp() {
+    initPage();
+    const selectMenu = document.querySelector('#selectMenu');
+    if (selectMenu) {
+      selectMenu.addEventListener('change', selectMenuChangeEventHandler);
+    }
+  }
+  
      
         
           
