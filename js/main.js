@@ -273,7 +273,7 @@ async function refreshPosts(posts) {
   }
 
 //Function 19
-  async function selectMenuChangeEventHandler(event) {
+  /* async function selectMenuChangeEventHandler(event) {
     if (!event) return;
   
     const selectMenu = document.querySelector('#selectMenu');
@@ -324,6 +324,31 @@ async function refreshPosts(posts) {
             return [userId, posts, refreshPostsArray];
           } */
 
+            async function selectMenuChangeEventHandler(event) {
+                if (event?.type !== 'change') return;
+              
+                const selectMenu = event?.target;
+              
+                if (!selectMenu) return;
+              
+                let userId;
+              
+                if (selectMenu.value === 'Employees' || selectMenu.value === '') {
+                  userId = 1;
+                } else {
+                  userId = selectMenu.value;
+                }
+              
+                selectMenu.disabled = true;
+              
+                const posts = await getUserPosts(userId);
+                const refreshPostsArray = await refreshPosts(posts);
+              
+                selectMenu.disabled = false;
+              
+                return [userId, posts, refreshPostsArray];
+              }
+              
             
             
           
