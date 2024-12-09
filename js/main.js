@@ -255,6 +255,21 @@ function toggleComments(event, postId) {
   
     return [section, button];
   }
+
+//Function 18
+
+async function refreshPosts(posts) {
+    const removeButtons = removeButtonListeners();
+    
+    const main = document.querySelector('main');
+    const deleteResult = deleteChildElements(main);
+    
+    const fragment = await displayPosts(posts);
+    
+    const addButtons = addButtonListeners();
+  
+    return [removeButtons, deleteResult, fragment, addButtons];
+  }
   
   
   
