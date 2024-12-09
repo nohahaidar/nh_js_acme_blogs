@@ -52,7 +52,7 @@ function deleteChildElements(parentElement) {
 
 
 //Function 6
-function addButtonListeners() {
+/* function addButtonListeners() {
     const main = document.querySelector('main');
     const buttons = main?.querySelectorAll('button') || [];
     if (buttons.length === 0) return buttons;
@@ -67,7 +67,27 @@ function addButtonListeners() {
     return buttons;
 }
 
+function toggleComments(event, postId) {} */
+
+function addButtonListeners() {
+    const main = document.querySelector('main');
+    if (!main) return [];
+    const buttons = main.querySelectorAll('button');
+    if (buttons.length === 0) return buttons;
+
+    buttons.forEach(button => {
+        const postId = button.dataset.postId;
+        if (postId) {
+            button.addEventListener('click', (e) => {
+                toggleComments(e, postId);
+            });
+        }
+    });
+    return buttons;
+}
+
 function toggleComments(event, postId) {}
+
 
 
 
