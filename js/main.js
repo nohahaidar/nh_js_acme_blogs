@@ -232,5 +232,16 @@ async function createPosts(posts) {
     return fragment;
 }
 
-
+//Function 16
+async function displayPosts(posts) {
+    const mainElement = document.querySelector('main');
+    
+    const element = posts?.length 
+      ? await createPosts(posts) 
+      : createElemWithText('p', 'No posts available');
+      
+    mainElement.appendChild(element);
+    return element;
+  }
+  
 
