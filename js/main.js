@@ -102,6 +102,25 @@ function removeButtonListeners() {
     return buttons;
 }
 
+//Function 8
+function createComments(comments) {
+    if (!comments) return;
+
+    const fragment = document.createDocumentFragment();
+
+    comments.forEach(comment => {
+        const article = document.createElement('article');
+        const h3 = createElemWithText('h3', comment.name);
+        const p1 = createElemWithText('p', comment.body);
+        const p2 = createElemWithText('p', `From: ${comment.email}`);
+
+        article.append(h3, p1, p2);
+        fragment.append(article);
+    });
+
+    return fragment;
+}
+
 
 
 
