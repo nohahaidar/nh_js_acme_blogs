@@ -10,6 +10,7 @@ function createElemWithText(elemType = "p", textContent = "", className) {
 //Function 2
 function createSelectOptions(users) {
     if (!users) return undefined;
+    
     return users.map(user => {
         const option = document.createElement('option');
         option.value = user.id;
@@ -33,6 +34,7 @@ function toggleCommentSection(postId) {
 //Function 4
 function toggleCommentButton(postId) {
     if (!postId) return undefined;
+
     const button = document.querySelector(`button[data-post-id="${postId}"]`);
     if (!button) return null;
     button.textContent = button.textContent === 'Show Comments' ? 'Hide Comments' : 'Show Comments';
@@ -42,6 +44,7 @@ function toggleCommentButton(postId) {
 //Function 5
 function deleteChildElements(parentElement) {
     if (!parentElement?.tagName) return undefined;
+
     let child = parentElement.lastElementChild;
     while (child) {
         parentElement.removeChild(child);
@@ -147,6 +150,7 @@ async function getUsers() {
 //Function 11
 async function getUserPosts(userId) {
     if (!userId) return undefined;
+
     try {
         const response = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
         const posts = await response.json();
@@ -184,6 +188,8 @@ async function getPostComments(postId) {
 
 //Function 14
 async function displayComments(postId) {
+    if (!postId) return undefined;
+
     const section = document.createElement('section');
     section.dataset.postId = postId;
     section.classList.add('comments', 'hide');
