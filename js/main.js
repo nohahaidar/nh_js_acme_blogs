@@ -246,6 +246,8 @@ async function displayPosts(posts) {
 
 //Function 17
 function toggleComments(event, postId) {
+    if (!event || !postId) return;
+  
     event.target.listener = true;
   
     const section = toggleCommentSection(postId);
@@ -253,6 +255,7 @@ function toggleComments(event, postId) {
   
     return [section, button];
   }
+  
   
   
 
