@@ -273,7 +273,7 @@ async function refreshPosts(posts) {
   }
 
 //Function 19
- async function selectMenuChangeEventHandler(event) {
+ /* async function selectMenuChangeEventHandler(event) {
     if (!event) return;
   
     const selectMenu = document.querySelector('#selectMenu');
@@ -290,7 +290,7 @@ async function refreshPosts(posts) {
     selectMenu.disabled = false;
   
     return [userId, posts, refreshPostsArray];
-  } 
+  } */
 
    /* async function selectMenuChangeEventHandler(event) {
         if (!event?.target) return;
@@ -304,6 +304,26 @@ async function refreshPosts(posts) {
         selectMenu.disabled = false;
         return [userId, posts, refreshPostsArray];
       } */
+
+        async function selectMenuChangeEventHandler(event) {
+            if (!event?.target?.value) return;
+          
+            const selectMenu = document.querySelector('#selectMenu');
+            if (!selectMenu) return;
+          
+            selectMenu.disabled = true;
+          
+            const userId = parseInt(event.target.value) || 1;
+            const posts = await getUserPosts(userId);
+            if (!Array.isArray(posts) || posts.some(post => post.userId !== userId)) return;
+          
+            const refreshPostsArray = await refreshPosts(posts);
+          
+            selectMenu.disabled = false;
+          
+            return [userId, posts, refreshPostsArray];
+          }
+          
 
      
         
