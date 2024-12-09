@@ -305,7 +305,7 @@ async function refreshPosts(posts) {
         return [userId, posts, refreshPostsArray];
       } */
 
-        async function selectMenuChangeEventHandler(event) {
+        /* async function selectMenuChangeEventHandler(event) {
             if (!event?.target?.value) return;
             const selectMenu = document.querySelector('#selectMenu');
             if (!selectMenu) return;
@@ -316,7 +316,25 @@ async function refreshPosts(posts) {
             const refreshPostsArray = await refreshPosts(posts);
             selectMenu.disabled = false;
             return [userId, posts, refreshPostsArray];
-          }
+          } */
+
+            async function selectMenuChangeEventHandler(event) {
+                if (!event?.target?.value) return;
+                const selectMenu = document.querySelector('#selectMenu');
+                if (!selectMenu) return;
+              
+                selectMenu.disabled = true;
+                const userId = parseInt(event.target.value) || 1;
+                const posts = await getUserPosts(userId);
+                if (!Array.isArray(posts) || posts.some(post => post.userId !== userId)) {
+                  selectMenu.disabled = false;
+                  return;
+                }
+                const refreshPostsArray = await refreshPosts(posts);
+                selectMenu.disabled = false;
+                return [userId, posts, refreshPostsArray];
+              }
+              
           
       
   
