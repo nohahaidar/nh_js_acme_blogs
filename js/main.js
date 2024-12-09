@@ -90,7 +90,17 @@ function addButtonListeners() {
 
 function toggleComments(event, postId) {}
 
-
+//Function 7
+function removeButtonListeners() {
+    const buttons = document.querySelectorAll('main button');
+    buttons.forEach(button => {
+        const postId = button.dataset.id;
+        if (postId) {
+            button.removeEventListener('click', toggleComments);
+        }
+    });
+    return buttons;
+}
 
 
 
