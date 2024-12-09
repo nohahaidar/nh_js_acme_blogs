@@ -10,7 +10,7 @@ function createElemWithText(elemType = "p", textContent = "", className) {
 //Function 2
 function createSelectOptions(users) {
     if (!users) return undefined;
-    
+
     return users.map(user => {
         const option = document.createElement('option');
         option.value = user.id;
@@ -199,6 +199,36 @@ async function displayComments(postId) {
 
     section.appendChild(fragment);
     return section;
+}
+
+//Function 15
+async function createPosts(posts) {
+    const fragment = document.createDocumentFragment();
+
+    for (const post of posts) {
+        const article = document.createElement('article');
+
+        const h2 = createElemWithText('h2', post.title);
+        const pBody = createElemWithText('p', post.body);
+        const pId = createElemWithText('p', `Post ID: ${post.id}`);
+
+        const author = await getUser(post.userId);
+        const pAuthor = createElemWithText('p', `Author: ${author.name} with ${author.company.name}`);
+        const pCatchPhrase = createElemWithText('p', author.company.catchPhrase);
+
+        const button = document.createElement('button');
+        button.textContent = 'Show Comments';
+        button.dataset.postId = post.id;
+
+        article.append(h2, pBody, pId, pAuthor, pCatchPhrase, button);
+
+        const section = await displayComments(post.id);
+        article.appendChild(section);
+
+        fragment.appendChild(article);
+    }
+
+    return fragment;
 }
 
 
