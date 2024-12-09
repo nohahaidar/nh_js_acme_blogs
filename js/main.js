@@ -39,6 +39,17 @@ function toggleCommentButton(postId) {
     return button;
 }
 
+//Function 5
+function deleteChildElements(parentElement) {
+    if (!parentElement) return undefined;
+    let child = parentElement.lastElementChild;
+    while (child) {
+        parentElement.removeChild(child);
+        child = parentElement.lastElementChild;
+    }
+    return parentElement;
+}
+
 
 
 
