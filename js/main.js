@@ -259,6 +259,8 @@ function toggleComments(event, postId) {
 //Function 18
 
 async function refreshPosts(posts) {
+    if (!posts) return undefined;
+    
     const removeButtons = removeButtonListeners();
     
     const main = document.querySelector('main');
