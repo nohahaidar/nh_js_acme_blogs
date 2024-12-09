@@ -257,10 +257,9 @@ function toggleComments(event, postId) {
   }
 
 //Function 18
-
 async function refreshPosts(posts) {
     if (!posts) return undefined;
-    
+
     const removeButtons = removeButtonListeners();
     
     const main = document.querySelector('main');
@@ -271,6 +270,22 @@ async function refreshPosts(posts) {
     const addButtons = addButtonListeners();
   
     return [removeButtons, deleteResult, fragment, addButtons];
+  }
+
+//Function 19
+async function selectMenuChangeEventHandler(event) {
+    const selectMenu = document.querySelector('#selectMenu');
+    selectMenu.disabled = true;
+  
+    const userId = event.target.value || 1;
+  
+    const posts = await getUserPosts(userId);
+  
+    const refreshPostsArray = await refreshPosts(posts);
+  
+    selectMenu.disabled = false;
+  
+    return [userId, posts, refreshPostsArray];
   }
   
   
