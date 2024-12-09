@@ -1,4 +1,5 @@
 //Everytime a function is done, save it, ' git commit -a -m "comment" ', then ' git push '
+//Function 1
 function createElemWithText(elemType = "p", textContent = "", className) {
     const element = document.createElement(elemType);
     element.textContent = textContent;
@@ -6,6 +7,7 @@ function createElemWithText(elemType = "p", textContent = "", className) {
     return element;
 }
 
+//Function 2
 function createSelectOptions(users) {
     if (!users) return undefined;
     return users.map(user => {
@@ -16,6 +18,7 @@ function createSelectOptions(users) {
     });
 }
 
+//Function 3
 function toggleCommentSection(postId) {
     if (!postId) return undefined;
 
@@ -25,6 +28,15 @@ function toggleCommentSection(postId) {
     
     section.classList.toggle('hide');
     return section;
+}
+
+//Function 4
+function toggleCommentButton(postId) {
+    if (!postId) return undefined;
+    const button = document.querySelector(`button[data-post-id="${postId}"]`);
+    if (!button) return null;
+    button.textContent = button.textContent === 'Show Comments' ? 'Hide Comments' : 'Show Comments';
+    return button;
 }
 
 
