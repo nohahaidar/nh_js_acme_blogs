@@ -324,7 +324,7 @@ async function refreshPosts(posts) {
             return [userId, posts, refreshPostsArray];
           } */
 
-            async function selectMenuChangeEventHandler(event) {
+            /* async function selectMenuChangeEventHandler(event) {
                 if (event?.type !== 'change') return;
               
                 const selectMenu = event?.target;
@@ -347,7 +347,18 @@ async function refreshPosts(posts) {
                 selectMenu.disabled = false;
               
                 return [userId, posts, refreshPostsArray];
-              }
+              } */
+
+                const selectMenuChangeEventHandler = async(e) =>{
+                    if(!e) return;
+                
+                    document.querySelector('#selectMenu').disabled = true;
+                    const userId = e?.target?.value || 1;
+                    const postsJSONData = await getUserPosts(userId);
+                    const refreshPostsArray = refreshPosts(postsJSONData);
+                    document.querySelector('#selectMenu').disabled = false;
+                    return [userId, postsJSONData, refreshPostsArray];
+                }
               
             
             
