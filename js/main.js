@@ -238,7 +238,7 @@ async function displayPosts(posts) {
     
     const element = posts?.length 
       ? await createPosts(posts) 
-      : createElemWithText('p', 'No posts available');
+      : createElemWithText('p', 'No posts available').classList.add('default-text');
       
     mainElement.appendChild(element);
     return element;
