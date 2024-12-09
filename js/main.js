@@ -72,17 +72,19 @@ function toggleComments(event, postId) {} */
 function addButtonListeners() {
     const main = document.querySelector('main');
     if (!main) return [];
+
     const buttons = main.querySelectorAll('button');
     if (buttons.length === 0) return buttons;
 
     buttons.forEach(button => {
         const postId = button.dataset.postId;
         if (postId) {
-            button.addEventListener('click', (e) => {
+            button.addEventListener('click', function (e) {
                 toggleComments(e, postId);
             });
         }
     });
+
     return buttons;
 }
 
