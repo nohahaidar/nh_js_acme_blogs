@@ -182,5 +182,18 @@ async function getPostComments(postId) {
     }
 }
 
+//Function 14
+async function displayComments(postId) {
+    const section = document.createElement('section');
+    section.dataset.postId = postId;
+    section.classList.add('comments', 'hide');
+
+    const comments = await getPostComments(postId);
+    const fragment = createComments(comments);
+
+    section.appendChild(fragment);
+    return section;
+}
+
 
 
