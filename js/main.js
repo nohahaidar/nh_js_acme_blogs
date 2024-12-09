@@ -233,7 +233,7 @@ async function createPosts(posts) {
 }
 
 //Function 16
-async function displayPosts(posts) {
+/* async function displayPosts(posts) {
     const mainElement = document.querySelector('main');
     
     const element = posts?.length 
@@ -242,7 +242,18 @@ async function displayPosts(posts) {
       
     mainElement.appendChild(element);
     return element;
-  } 
+  } */
+
+    async function displayPosts(posts) {
+        const mainElement = document.querySelector('main');
+      
+        const element = posts?.length 
+          ? await createPosts(posts) 
+          : createElemWithText('p', 'No posts available', 'default-text');
+          
+        mainElement.appendChild(element);
+        return element;
+      }
 
 //Function 17
 function toggleComments(event, postId) {
