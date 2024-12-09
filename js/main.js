@@ -121,6 +121,18 @@ function createComments(comments) {
     return fragment;
 }
 
+//Funciton 9
+function populateSelectMenu(users) {
+    if (!users) return;
+
+    const selectMenu = document.getElementById('selectMenu');
+    const options = createSelectOptions(users);
+
+    options.forEach(option => selectMenu.append(option));
+
+    return selectMenu;
+}
+
 
 
 
