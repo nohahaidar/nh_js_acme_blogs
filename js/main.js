@@ -133,6 +133,17 @@ function populateSelectMenu(users) {
     return selectMenu;
 }
 
+//Function 10
+async function getUsers() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const users = await response.json();
+        return users;
+    } catch (error) {
+        console.error('Error fetching users:', error);
+    }
+}
+
 
 
 
