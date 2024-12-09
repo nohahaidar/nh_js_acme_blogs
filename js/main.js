@@ -51,5 +51,25 @@ function deleteChildElements(parentElement) {
 }
 
 
+//Function 6
+function addButtonListeners() {
+    const buttons = document.querySelectorAll('main button');
+    if (buttons.length === 0) return;
+    buttons.forEach(button => {
+        const postId = button.dataset.postId;
+        if (postId) {
+            button.addEventListener('click', (event) => {
+                toggleComments(event, postId);
+            });
+        }
+    });
+    return buttons;
+}
+
+function toggleComments(event, postId) {
+    // Placeholder logic
+}
+
+
 
 
