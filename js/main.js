@@ -144,6 +144,17 @@ async function getUsers() {
     }
 }
 
+//Function 11
+async function getUserPosts(userId) {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
+        const posts = await response.json();
+        return posts;
+    } catch (error) {
+        console.error('Error fetching user posts:', error);
+    }
+}
+
 
 
 
