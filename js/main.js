@@ -273,7 +273,7 @@ async function refreshPosts(posts) {
   }
 
 //Function 19
- /* async function selectMenuChangeEventHandler(event) {
+  async function selectMenuChangeEventHandler(event) {
     if (!event) return;
   
     const selectMenu = document.querySelector('#selectMenu');
@@ -290,7 +290,7 @@ async function refreshPosts(posts) {
     selectMenu.disabled = false;
   
     return [userId, posts, refreshPostsArray];
-  } */
+  } 
 
    /* async function selectMenuChangeEventHandler(event) {
         if (!event?.target) return;
@@ -324,28 +324,7 @@ async function refreshPosts(posts) {
             return [userId, posts, refreshPostsArray];
           } */
 
-            function selectMenuChangeEventHandler(event) {
-                if (!event || !event.target) {
-                    return;
-                }
             
-                const userId = event.target.value;
-                
-                if (!userId) {
-                    return;
-                }
-            
-                getUserPosts(userId).then(posts => {
-                    if (!posts || posts.length === 0) {
-                        return;
-                    }
-            
-                    const refreshPostsArray = refreshPosts(posts);
-                    return [userId, posts, refreshPostsArray];
-                }).catch(err => {
-                    console.error("Error fetching user posts:", err);
-                });
-            }
             
           
 //Function 20
