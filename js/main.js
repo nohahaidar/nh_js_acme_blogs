@@ -55,23 +55,6 @@ function deleteChildElements(parentElement) {
 
 
 //Function 6
-/* function addButtonListeners() {
-    const main = document.querySelector('main');
-    const buttons = main?.querySelectorAll('button') || [];
-    if (buttons.length === 0) return buttons;
-    buttons.forEach(button => {
-        const postId = button.dataset.postId;
-        if (postId) {
-            button.addEventListener('click', (e) => {
-                toggleComments(e, postId);
-            });
-        }
-    });
-    return buttons;
-}
-
-function toggleComments(event, postId) {} */
-
 function addButtonListeners() {
     const main = document.querySelector('main');
     if (!main) return [];
@@ -233,29 +216,16 @@ async function createPosts(posts) {
 }
 
 //Function 16
-/* async function displayPosts(posts) {
+async function displayPosts(posts) {
     const mainElement = document.querySelector('main');
-    
-    const element = posts?.length 
-      ? await createPosts(posts) 
-      : createElemWithText('p', 'No posts available');
-      
+  
+    const element = posts?.length
+      ? await createPosts(posts)
+      : createElemWithText('p', 'Select an Employee to display their posts.', 'default-text');
+  
     mainElement.appendChild(element);
     return element;
-  } */
-
-    async function displayPosts(posts) {
-        const mainElement = document.querySelector('main');
-      
-        const element = posts?.length
-          ? await createPosts(posts)
-          : createElemWithText('p', 'Select an Employee to display their posts.', 'default-text');
-      
-        mainElement.appendChild(element);
-        return element;
-      }
-      
-         
+  }
 
 //Function 17
 function toggleComments(event, postId) {
