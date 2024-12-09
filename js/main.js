@@ -203,6 +203,7 @@ async function displayComments(postId) {
 
 //Function 15
 async function createPosts(posts) {
+    if (!posts) return undefined;
     const fragment = document.createDocumentFragment();
 
     for (const post of posts) {
