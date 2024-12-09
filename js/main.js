@@ -233,7 +233,7 @@ async function createPosts(posts) {
 }
 
 //Function 16
-async function displayPosts(posts) {
+/* async function displayPosts(posts) {
     const mainElement = document.querySelector('main');
     
     const element = posts?.length 
@@ -242,7 +242,19 @@ async function displayPosts(posts) {
       
     mainElement.appendChild(element);
     return element;
-  } 
+  } */
+
+    async function displayPosts(posts) {
+        const mainElement = document.querySelector('main');
+      
+        const element = posts?.length
+          ? await createPosts(posts)
+          : createElemWithText('p', 'Select an Employee to display their posts.', 'default-text');
+      
+        mainElement.appendChild(element);
+        return element;
+      }
+      
          
 
 //Function 17
@@ -274,81 +286,23 @@ async function refreshPosts(posts) {
   }
 
 //Function 19
-  /* async function selectMenuChangeEventHandler(event) {
-    if (!event) return;
+async function selectMenuChangeEventHandler(event) {
+    if (event?.type !== 'change') return; // Ensure the event is a 'change' event
   
-    const selectMenu = document.querySelector('#selectMenu');
-    if (!selectMenu) return;
+    const userId = event?.target?.value === "Employees" || !event?.target?.value 
+      ? 1 
+      : parseInt(event.target.value);
   
-    selectMenu.disabled = true;
-  
-    const userId = event.target?.value || 1;
+    const selectMenu = event?.target; // event.target is the selectMenu
+    if (selectMenu) selectMenu.disabled = true;
   
     const posts = await getUserPosts(userId);
-  
     const refreshPostsArray = await refreshPosts(posts);
   
-    selectMenu.disabled = false;
+    if (selectMenu) selectMenu.disabled = false;
   
     return [userId, posts, refreshPostsArray];
-  } 
-
-   /* async function selectMenuChangeEventHandler(event) {
-        if (!event?.target) return;
-        const selectMenu = document.querySelector('#selectMenu');
-        if (!selectMenu) return;
-        selectMenu.disabled = true;
-        const userId = parseInt(event.target.value) || 1;
-        const posts = await getUserPosts(userId);
-        if (!Array.isArray(posts)) return;
-        const refreshPostsArray = await refreshPosts(posts);
-        selectMenu.disabled = false;
-        return [userId, posts, refreshPostsArray];
-      } */
-
-         /* async function selectMenuChangeEventHandler(event) {
-            if (!event?.target?.value) return;
-          
-            const selectMenu = document.querySelector('#selectMenu');
-            if (!selectMenu) return;
-          
-            selectMenu.disabled = true;
-          
-            const userId = parseInt(event.target.value) || 1;
-            const posts = await getUserPosts(userId);
-            if (!Array.isArray(posts) || posts.some(post => post.userId !== userId)) return;
-          
-            const refreshPostsArray = await refreshPosts(posts);
-          
-            selectMenu.disabled = false;
-          
-            return [userId, posts, refreshPostsArray];
-          } */
-
-            async function selectMenuChangeEventHandler(event) {
-                if (event?.type !== 'change') return; // Ensure the event is a 'change' event
-              
-                const userId = event?.target?.value === "Employees" || !event?.target?.value 
-                  ? 1 
-                  : parseInt(event.target.value);
-              
-                const selectMenu = event?.target; // event.target is the selectMenu
-                if (selectMenu) selectMenu.disabled = true;
-              
-                const posts = await getUserPosts(userId);
-                const refreshPostsArray = await refreshPosts(posts);
-              
-                if (selectMenu) selectMenu.disabled = false;
-              
-                return [userId, posts, refreshPostsArray];
-              }
-              
-
-            
-
-              
-            
-            
+  }      
           
 //Function 20
 async function initPage() {
