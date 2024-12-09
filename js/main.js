@@ -246,14 +246,14 @@ async function createPosts(posts) {
 
     async function displayPosts(posts) {
         const mainElement = document.querySelector('main');
-      
-        const element = posts?.length 
-          ? await createPosts(posts) 
-          : createElemWithText('p', 'No posts available', 'default-text');
-          
+        deleteChildElements(mainElement);
+        const element = posts?.length
+          ? await createPosts(posts)
+          : createElemWithText('p', 'Select an Employee to display their posts.', 'default-text');
         mainElement.appendChild(element);
         return element;
       }
+         
 
 //Function 17
 function toggleComments(event, postId) {
