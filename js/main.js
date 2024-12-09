@@ -233,7 +233,7 @@ async function createPosts(posts) {
 }
 
 //Function 16
-/* async function displayPosts(posts) {
+async function displayPosts(posts) {
     const mainElement = document.querySelector('main');
     
     const element = posts?.length 
@@ -242,24 +242,17 @@ async function createPosts(posts) {
       
     mainElement.appendChild(element);
     return element;
-  } */
+  } 
 
-    async function displayPosts(posts) {
-        const mainElement = document.querySelector('main');
-        
-        let element;
-      
-        if (posts && posts.length > 0) {
-          element = await createPosts(posts);
-        } else {
-          element = document.createElement('p');
-          element.textContent = 'No posts available';
-          element.classList.add('default-text');
-        }
-      
-        mainElement.appendChild(element);
-        return element;
-      }
-      
+//Function 17
+function toggleComments(event, postId) {
+    event.target.listener = true;
+  
+    const section = toggleCommentSection(postId);
+    const button = toggleCommentButton(postId);
+  
+    return [section, button];
+  }
+  
   
 
