@@ -324,7 +324,14 @@ async function refreshPosts(posts) {
             return [userId, posts, refreshPostsArray];
           }
           
-
+//Function 20
+async function initPage() {
+    const users = await getUsers();
+    if (!Array.isArray(users)) return;
+    const select = populateSelectMenu(users);
+    return [users, select];
+  }
+  
      
         
           
